@@ -14,15 +14,20 @@ BETA = 0.3;                 % коэффициент вязкого трения
 dx = @(t, x) pendulumGrad(t, x, BETA);
 event_out_of_bounds = @(t, z) outOfBounds(t, z, XMAX+0.01);
 
-plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); % строим фазовые траектории
-plotQuiver(x1, x2, dx); % строим стрелочки
+%plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); % строим фазовые траектории
+%plotQuiver(x1, x2, dx); % строим стрелочки
 
-toc; tic; % остановка  и запуск секундомера
+%toc; tic; % остановка  и запуск секундомера
 
-plotLocus(x1, x2, @vanderpolGrad, event_out_of_bounds, TMAX); % строим фазовые траектории
-plotQuiver(x1, x2, @vanderpolGrad); % строим стрелочки
+%plotLocus(x1, x2, @vanderpolGrad, event_out_of_bounds, TMAX); % строим фазовые траектории
+%plotQuiver(x1, x2, @vanderpolGrad); % строим стрелочки
 
-toc;  % остановка секундомера
+%toc;  % остановка секундомера
+
+plotLocus(x1, x2, @dz, event_out_of_bounds, TMAX);
+plotQuiver(x1, x2, @dz);
+
+toc;
 
 %% определение пользовательских функций
 
@@ -41,5 +46,11 @@ dxdt(1, :) = x(2, :);
 dxdt(2, :) = -x(1, :) + 0.5 * (1 - x(1, :) .^ 2) .*x(2, :);
 end
 
+function dxdt = dz(t, x)
+% функция, возвращающая градиент
+% в ней необходимо задать уравнения системы
+dxdt(1, :) = x(2, :);
+dxdt(2, :) =  5 * x(2, :) .^ 2 + x(1, :) .* (x(1, :) - 1);
 
+end
 
