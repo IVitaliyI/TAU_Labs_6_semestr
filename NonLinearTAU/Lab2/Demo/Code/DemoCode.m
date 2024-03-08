@@ -24,8 +24,8 @@ event_out_of_bounds = @(t, z) outOfBounds(t, z, XMAX+0.01);
 
 %toc;  % остановка секундомера
 
-plotLocus(x1, x2, @dz, event_out_of_bounds, TMAX);
-plotQuiver(x1, x2, @dz);
+plotLocus(x1, x2, @varB, event_out_of_bounds, TMAX);
+plotQuiver(x1, x2, @varB);
 
 toc;
 
@@ -54,3 +54,6 @@ dxdt(2, :) =  5 * x(2, :) .^ 2 + x(1, :) .* (x(1, :) - 1);
 
 end
 
+function dxdt = varB(t, x)
+    dxdt = [x(2, :); x(2,:)^4 * x(1,:) + x(2,:)];
+end

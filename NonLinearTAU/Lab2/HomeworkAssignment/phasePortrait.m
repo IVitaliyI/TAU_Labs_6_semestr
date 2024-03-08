@@ -1,6 +1,6 @@
 function phasePortrait(f, XMAX, YMAX, STEP, TMAX, event_fnc)
 
-    [x, y] = meshgrid(-0.5:STEP:XMAX, -YMAX:STEP:YMAX);
+    [x, y] = meshgrid(-XMAX:STEP:XMAX, -YMAX:STEP:YMAX);
     
     [d1, d2] = size(x);
     u = zeros(d1);
