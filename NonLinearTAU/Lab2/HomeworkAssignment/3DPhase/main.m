@@ -4,7 +4,7 @@ close all;
 
 %% Constants
 
-TMAX = 500;
+TMAX = 1000;
 
 prov = 'B';
 
@@ -13,9 +13,9 @@ if prov == 'A'
     gamma = 0.1;
     alpha = 0.05;
     
-    X0 = 0.1;
-    Y0 = -0.1;
-    Z0 = 0.1;
+    X0 = 0.10;
+    Y0 = -0.10;
+    Z0 = 0.10;
 
 else
     % Var B
@@ -31,7 +31,7 @@ tspan = [0 TMAX];
 xyz_0 = [X0;Y0;Z0];
 
 
-[t, v] = ode45(@(t, v) func_V(t, v, gamma, alpha), tspan, xyz_0, odeset('RelTol',1e-3));
+[t, v] = ode23t(@(t, v) func_V(t, v, gamma, alpha), tspan, xyz_0, odeset('RelTol',1e-3));
 
 
 plot3(v(:,1), v(:,2), v(:,3), LineWidth=1);

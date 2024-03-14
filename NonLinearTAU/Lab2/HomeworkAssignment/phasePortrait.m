@@ -39,4 +39,3 @@ function phasePortrait(f, XMAX, YMAX, STEP, TMAX, event_fnc)
     end
 
 end
-
