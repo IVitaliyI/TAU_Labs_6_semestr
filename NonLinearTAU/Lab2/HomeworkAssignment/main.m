@@ -2,16 +2,17 @@ clc;
 clear all;
 close all;
 
-
-XMAX = 5;
-YMAX = 5;
+XMIN = -3;
+XMAX = 3;
+YMIN = -3;
+YMAX = 3;
 TMAX = 10;
-STEP = 0.5;
+STEP = 0.25;
 
 tic;
-event_out_of_bounds = @(t, z) outOfBounds(t, z, XMAX+0.01);
+event_out_of_bounds = @(t, z) outOfBounds(t, z, XMIN-0.01, XMAX+0.01, YMIN-0.01, YMAX+0.01);
 
-phasePortrait(@varC, XMAX, YMAX, STEP, TMAX, event_out_of_bounds);
+phasePortrait(@varA, [XMIN XMAX], [YMIN YMAX], STEP, TMAX, event_out_of_bounds);
 
 toc;
 

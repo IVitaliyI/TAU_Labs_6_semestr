@@ -1,10 +1,10 @@
-function phasePortrait(f, XMAX, YMAX, STEP, TMAX, event_fnc)
+function phasePortrait(f, X0, Y0, STEP, TMAX, event_fnc)
 
-    [x, y] = meshgrid(-XMAX:STEP:XMAX, -YMAX:STEP:YMAX);
+    [x, y] = meshgrid(X0(1):STEP:X0(2), Y0(1):STEP:Y0(2));
     
     [d1, d2] = size(x);
-    u = zeros(d1);
-    v = zeros(d1);
+    u = zeros(d1, d2);
+    v = zeros(d1, d2);
     t = 0;
 
     for i = 1:d1

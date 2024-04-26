@@ -1,7 +1,7 @@
-function [value, isterminal, direction] = outOfBounds(t, z, xymax) 
+function [value, isterminal, direction] = outOfBounds(t, z, XMIN, XMAX, YMIN, YMAX) 
 % функция детекции выхода за пределы сетки
 
-value = (abs(z(1)) > xymax) || (abs(z(2)) > xymax); % --- условие
+value = (z(1) > XMAX) || (z(1) < XMIN) || (z(2) > YMAX) || (z(2) < YMIN); % --- условие
 isterminal = 1; % --- остановить симуляцию
 % direction --- параметр, отвечающий за направление перескока через
 direction = 0; % --- параметр, который нам не интересен, но необходим
